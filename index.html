@@ -1,0 +1,2312 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PozPom — FruitiBox : paniers de fruits frais livrés en entreprise à Montpellier. Dès 29 €/semaine, sans engagement, 5 variétés minimum." />
+  <title>PozPom — Fruits frais en entreprise · Montpellier</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ═══════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════ */
+    :root {
+      --ivory:        #FAF7F0;
+      --ivory-2:      #F3EFE4;
+      --ivory-3:      #EAE4D5;
+      --green-deep:   #1A3D2B;
+      --green-mid:    #2C6045;
+      --green-light:  #4A8C65;
+      --green-pale:   #D4EAD9;
+      --accent:       #E8834A;
+      --accent-soft:  #FDF0E8;
+      --accent-dark:  #C4622D;
+      --text-1:       #1C1814;
+      --text-2:       #4A4540;
+      --text-3:       #7A756E;
+      --border:       rgba(26,61,43,.12);
+      --shadow-sm:    0 2px 8px rgba(26,61,43,.08);
+      --shadow-md:    0 8px 32px rgba(26,61,43,.12);
+      --shadow-lg:    0 24px 64px rgba(26,61,43,.16);
+      --radius-sm:    8px;
+      --radius-md:    16px;
+      --radius-lg:    24px;
+      --radius-xl:    40px;
+      --bg:           var(--ivory);
+      --surface:      #FFFFFF;
+      --surface-2:    var(--ivory-2);
+    }
+
+    [data-theme="dark"] {
+      --ivory:        #F0ECE3;
+      --ivory-2:      #E8E2D6;
+      --green-deep:   #3DCA7A;
+      --green-mid:    #52D98C;
+      --green-light:  #71E5A0;
+      --green-pale:   rgba(61,202,122,.12);
+      --accent:       #F09460;
+      --accent-soft:  rgba(240,148,96,.12);
+      --text-1:       #F0ECE3;
+      --text-2:       #B8B2A8;
+      --text-3:       #7A756E;
+      --border:       rgba(255,255,255,.08);
+      --shadow-sm:    0 2px 8px rgba(0,0,0,.3);
+      --shadow-md:    0 8px 32px rgba(0,0,0,.4);
+      --shadow-lg:    0 24px 64px rgba(0,0,0,.5);
+      --bg:           #0C1A12;
+      --surface:      #132019;
+      --surface-2:    #0F1A14;
+    }
+
+    /* ═══════════════════════════════════════
+       RESET & BASE
+    ═══════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text-1);
+      transition: background .4s ease, color .4s ease;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+    ::selection { background: var(--green-pale); color: var(--green-deep); }
+
+    /* ═══════════════════════════════════════
+       TYPOGRAPHY
+    ═══════════════════════════════════════ */
+    .display {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -.02em;
+    }
+    .heading-1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -.015em;
+    }
+    .heading-2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    .heading-3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    .body-lg { font-size: 1.125rem; line-height: 1.7; font-weight: 400; }
+    .body-md { font-size: 1rem; line-height: 1.6; }
+    .body-sm { font-size: .875rem; line-height: 1.6; }
+    .caption { font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; }
+
+    .text-green  { color: var(--green-mid); }
+    .text-accent { color: var(--accent); }
+    .text-2      { color: var(--text-2); }
+    .text-3      { color: var(--text-3); }
+
+    /* ═══════════════════════════════════════
+       LAYOUT
+    ═══════════════════════════════════════ */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .section { padding: 96px 0; }
+    .section--sm { padding: 64px 0; }
+
+    /* ═══════════════════════════════════════
+       COMPONENTS — BADGE
+    ═══════════════════════════════════════ */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+    }
+    .badge--green {
+      background: var(--green-pale);
+      color: var(--green-mid);
+    }
+    .badge--accent {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    .badge--outline {
+      background: transparent;
+      border: 1.5px solid var(--border);
+      color: var(--text-2);
+    }
+
+    /* ═══════════════════════════════════════
+       COMPONENTS — BUTTONS
+    ═══════════════════════════════════════ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 100px;
+      font-size: .95rem;
+      font-weight: 600;
+      transition: all .25s cubic-bezier(.4,0,.2,1);
+      white-space: nowrap;
+    }
+    .btn--primary {
+      background: var(--green-deep);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(26,61,43,.3);
+    }
+    .btn--primary:hover {
+      background: var(--green-mid);
+      box-shadow: 0 8px 28px rgba(26,61,43,.35);
+      transform: translateY(-2px);
+    }
+    .btn--accent {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(232,131,74,.35);
+    }
+    .btn--accent:hover {
+      background: var(--accent-dark);
+      box-shadow: 0 8px 28px rgba(232,131,74,.4);
+      transform: translateY(-2px);
+    }
+    .btn--ghost {
+      background: transparent;
+      border: 1.5px solid var(--border);
+      color: var(--text-1);
+    }
+    .btn--ghost:hover {
+      border-color: var(--green-mid);
+      color: var(--green-mid);
+      transform: translateY(-1px);
+    }
+    .btn--lg {
+      padding: 18px 36px;
+      font-size: 1.05rem;
+    }
+
+    /* ═══════════════════════════════════════
+       NAV
+    ═══════════════════════════════════════ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 0 24px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      transition: all .3s ease;
+    }
+    .nav.scrolled {
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav__logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-1);
+    }
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .nav__links a {
+      font-size: .9rem;
+      font-weight: 500;
+      color: var(--text-2);
+      transition: color .2s;
+    }
+    .nav__links a:hover { color: var(--green-mid); }
+    .nav__actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .theme-toggle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      transition: all .25s;
+      color: var(--text-2);
+    }
+    .theme-toggle:hover {
+      background: var(--green-pale);
+      color: var(--green-mid);
+      border-color: var(--green-mid);
+    }
+    .theme-toggle svg { width: 18px; height: 18px; }
+
+    .nav__hamburger {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+    .nav__hamburger span {
+      width: 20px;
+      height: 2px;
+      background: var(--text-1);
+      border-radius: 2px;
+      transition: all .3s;
+    }
+
+    /* ═══════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════ */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding-top: 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 70% 40%, rgba(74,140,101,.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 20% 80%, rgba(232,131,74,.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      padding: 80px 0;
+    }
+    .hero__eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .hero__title {
+      margin-bottom: 24px;
+    }
+    .hero__title em {
+      font-style: italic;
+      color: var(--green-mid);
+    }
+    .hero__subtitle {
+      color: var(--text-2);
+      margin-bottom: 40px;
+      max-width: 480px;
+    }
+    .hero__ctas {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    .hero__stats {
+      display: flex;
+      gap: 32px;
+    }
+    .hero__stat {
+      display: flex;
+      flex-direction: column;
+    }
+    .hero__stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--green-mid);
+      line-height: 1;
+    }
+    .hero__stat-label {
+      font-size: .8rem;
+      color: var(--text-3);
+      margin-top: 4px;
+    }
+
+    .hero__visual {
+      position: relative;
+    }
+    .hero__card-main {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero__card-main::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--green-mid), var(--accent));
+    }
+    .hero__fruit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .hero__fruit-item {
+      background: var(--surface-2);
+      border-radius: var(--radius-md);
+      padding: 16px 12px;
+      text-align: center;
+      font-size: 2rem;
+      line-height: 1;
+      transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+    }
+    .hero__fruit-item:hover { transform: scale(1.12) rotate(5deg); }
+    .hero__fruit-label {
+      font-size: .7rem;
+      color: var(--text-3);
+      margin-top: 6px;
+      font-weight: 500;
+    }
+    .hero__card-price {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .price-big {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--text-1);
+    }
+    .price-per {
+      font-size: .85rem;
+      color: var(--text-3);
+    }
+    .hero__card-tag {
+      font-size: .8rem;
+      color: var(--text-3);
+    }
+
+    .hero__badge-float {
+      position: absolute;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      box-shadow: var(--shadow-md);
+      animation: float 4s ease-in-out infinite;
+    }
+    .hero__badge-float--1 {
+      top: -20px;
+      right: -20px;
+      animation-delay: 0s;
+    }
+    .hero__badge-float--2 {
+      bottom: 40px;
+      left: -30px;
+      animation-delay: 2s;
+    }
+    .hbf-icon { font-size: 1.4rem; margin-bottom: 4px; }
+    .hbf-text { font-size: .75rem; font-weight: 600; color: var(--text-2); white-space: nowrap; }
+    .hbf-sub { font-size: .65rem; color: var(--text-3); }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
+    }
+
+    /* ═══════════════════════════════════════
+       SECTION HEADER
+    ═══════════════════════════════════════ */
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 64px;
+    }
+    .section-header .badge { margin-bottom: 16px; }
+    .section-header p { color: var(--text-2); margin-top: 16px; }
+
+    /* ═══════════════════════════════════════
+       STORYTELLING / BEFORE-AFTER
+    ═══════════════════════════════════════ */
+    .story {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .story__grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 0;
+      align-items: stretch;
+    }
+    .story__side {
+      padding: 64px 48px;
+    }
+    .story__side--before { background: var(--surface-2); border-radius: var(--radius-lg) 0 0 var(--radius-lg); }
+    .story__side--after  { background: var(--green-pale); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; }
+    [data-theme="dark"] .story__side--after { background: rgba(61,202,122,.08); }
+    .story__divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 24px;
+      background: var(--surface);
+    }
+    .story__arrow {
+      width: 48px;
+      height: 48px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .story__label {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .story__side--before .story__label { color: var(--text-3); }
+    .story__side--after  .story__label { color: var(--green-mid); }
+    .story__items { display: flex; flex-direction: column; gap: 16px; }
+    .story__item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: .95rem;
+      line-height: 1.5;
+    }
+    .story__item-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+    .story__side--before .story__item { color: var(--text-2); }
+    .story__side--after  .story__item { color: var(--text-1); font-weight: 500; }
+
+    /* ═══════════════════════════════════════
+       BENEFITS
+    ═══════════════════════════════════════ */
+    .benefits__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .benefit-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      transition: all .35s cubic-bezier(.4,0,.2,1);
+      position: relative;
+      overflow: hidden;
+    }
+    .benefit-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--green-mid), var(--accent));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .35s ease;
+    }
+    .benefit-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--green-pale);
+    }
+    .benefit-card:hover::after { transform: scaleX(1); }
+    .benefit-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--green-pale);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 24px;
+    }
+    .benefit-card h3 { margin-bottom: 12px; }
+    .benefit-card p { color: var(--text-2); font-size: .95rem; line-height: 1.6; }
+
+    /* ═══════════════════════════════════════
+       HOW IT WORKS
+    ═══════════════════════════════════════ */
+    .how {
+      background: var(--surface);
+    }
+    .how__steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      position: relative;
+    }
+    .how__steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(16.66% + 28px);
+      right: calc(16.66% + 28px);
+      height: 2px;
+      background: linear-gradient(90deg, var(--green-mid), var(--accent));
+      opacity: .3;
+    }
+    .step {
+      text-align: center;
+      position: relative;
+    }
+    .step__number {
+      width: 56px;
+      height: 56px;
+      background: var(--green-deep);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 0 auto 24px;
+      position: relative;
+      z-index: 1;
+      transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+    }
+    .step:hover .step__number { transform: scale(1.15); }
+    .step h3 { margin-bottom: 12px; }
+    .step p { color: var(--text-2); font-size: .95rem; line-height: 1.6; }
+
+    /* ═══════════════════════════════════════
+       PRICING
+    ═══════════════════════════════════════ */
+    .pricing__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+    .pricing-card {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      position: relative;
+      transition: all .3s ease;
+    }
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+    .pricing-card--featured {
+      border-color: var(--green-mid);
+      background: var(--green-deep);
+      color: #fff;
+    }
+    [data-theme="dark"] .pricing-card--featured {
+      background: rgba(44,96,69,.4);
+      border-color: var(--green-mid);
+    }
+    .pricing-card--featured p,
+    .pricing-card--featured .text-3 { color: rgba(255,255,255,.7); }
+    .pricing-card__badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .pricing-card__freq {
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--green-mid);
+      margin-bottom: 8px;
+    }
+    .pricing-card--featured .pricing-card__freq { color: rgba(255,255,255,.6); }
+    .pricing-card__price {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      margin-bottom: 8px;
+    }
+    .pricing-card__price-big {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .pricing-card__price-per {
+      font-size: .85rem;
+      color: var(--text-3);
+    }
+    .pricing-card--featured .pricing-card__price-per { color: rgba(255,255,255,.55); }
+    .pricing-card__desc {
+      font-size: .9rem;
+      color: var(--text-3);
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+    .pricing-card--featured .pricing-card__desc { color: rgba(255,255,255,.6); }
+    .pricing-card__features {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+    .pricing-card__feat {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .9rem;
+    }
+    .feat-check {
+      width: 20px;
+      height: 20px;
+      background: var(--green-pale);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .7rem;
+      flex-shrink: 0;
+      color: var(--green-mid);
+    }
+    .pricing-card--featured .feat-check {
+      background: rgba(255,255,255,.15);
+      color: #fff;
+    }
+
+    /* ═══════════════════════════════════════
+       REASSURANCE
+    ═══════════════════════════════════════ */
+    .reassurance { background: var(--surface); }
+    .reassurance__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .reassurance-item {
+      display: flex;
+      gap: 20px;
+      padding: 28px;
+      background: var(--surface-2);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      transition: all .3s;
+    }
+    .reassurance-item:hover {
+      border-color: var(--green-pale);
+      box-shadow: var(--shadow-sm);
+    }
+    .reassurance-item__icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+    .reassurance-item h3 { margin-bottom: 6px; font-size: 1rem; }
+    .reassurance-item p { font-size: .9rem; color: var(--text-2); line-height: 1.5; }
+
+    /* ═══════════════════════════════════════
+       STATS BAR
+    ═══════════════════════════════════════ */
+    .stats-bar {
+      background: var(--green-deep);
+      padding: 48px 0;
+    }
+    [data-theme="dark"] .stats-bar {
+      background: rgba(44,96,69,.25);
+      border: 1px solid var(--border);
+    }
+    .stats-bar__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      text-align: center;
+    }
+    .stat-item {
+      color: #fff;
+    }
+    [data-theme="dark"] .stat-item { color: var(--text-1); }
+    .stat-item__value {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+    [data-theme="dark"] .stat-item__value { color: var(--green-mid); }
+    .stat-item__label {
+      font-size: .85rem;
+      opacity: .7;
+    }
+    [data-theme="dark"] .stat-item__label { color: var(--text-2); }
+
+    /* ═══════════════════════════════════════
+       SOCIAL PROOF
+    ═══════════════════════════════════════ */
+    .social-proof__logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 64px;
+      padding: 32px;
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+    }
+    .logo-item {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-3);
+      opacity: .55;
+      transition: opacity .2s;
+      white-space: nowrap;
+    }
+    .logo-item:hover { opacity: .9; }
+    .logo-dot { width: 4px; height: 4px; background: var(--border); border-radius: 50%; }
+
+    .testimonials__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      transition: all .3s;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+    .testimonial-card__stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+      color: #F5C842;
+      font-size: 1rem;
+    }
+    .testimonial-card__quote {
+      font-size: .95rem;
+      line-height: 1.65;
+      color: var(--text-2);
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .testimonial-card__author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .testimonial-card__avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--green-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .testimonial-card__name { font-size: .9rem; font-weight: 600; }
+    .testimonial-card__role { font-size: .8rem; color: var(--text-3); }
+
+    /* ═══════════════════════════════════════
+       FAQ
+    ═══════════════════════════════════════ */
+    .faq { background: var(--surface); }
+    .faq__list {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: border-color .2s;
+    }
+    .faq-item.open { border-color: var(--green-mid); }
+    .faq-item__q {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 24px;
+      text-align: left;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-1);
+      background: var(--surface);
+      transition: background .2s;
+    }
+    .faq-item__q:hover { background: var(--surface-2); }
+    .faq-icon {
+      width: 28px;
+      height: 28px;
+      background: var(--green-pale);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all .3s;
+      color: var(--green-mid);
+      font-size: 1rem;
+      font-weight: 300;
+    }
+    .faq-item.open .faq-icon {
+      background: var(--green-mid);
+      color: #fff;
+      transform: rotate(45deg);
+    }
+    .faq-item__a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s cubic-bezier(.4,0,.2,1);
+    }
+    .faq-item.open .faq-item__a { max-height: 200px; }
+    .faq-item__a-inner {
+      padding: 0 24px 22px;
+      font-size: .95rem;
+      color: var(--text-2);
+      line-height: 1.65;
+    }
+
+    /* ═══════════════════════════════════════
+       FORM
+    ═══════════════════════════════════════ */
+    .form-section {
+      background: linear-gradient(135deg, var(--green-deep) 0%, #0F2A1E 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .form-section::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(232,131,74,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .form-section::after {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      left: -80px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(74,140,101,.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .form-section .section-header { position: relative; z-index: 1; }
+    .form-section .section-header * { color: rgba(255,255,255,.9) !important; }
+    .form-section .section-header p { color: rgba(255,255,255,.6) !important; }
+    .form-section .badge--green {
+      background: rgba(255,255,255,.1);
+      color: rgba(255,255,255,.8);
+    }
+    .form-box {
+      background: rgba(255,255,255,.05);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius-xl);
+      padding: 48px;
+      max-width: 680px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-group--full { grid-column: 1 / -1; }
+    .form-group label {
+      font-size: .82rem;
+      font-weight: 600;
+      color: rgba(255,255,255,.7);
+      letter-spacing: .02em;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: var(--radius-sm);
+      padding: 13px 16px;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .95rem;
+      transition: all .25s;
+      outline: none;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255,255,255,.3); }
+    .form-group select option { background: var(--green-deep); color: #fff; }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--green-light);
+      background: rgba(255,255,255,.1);
+      box-shadow: 0 0 0 3px rgba(74,140,101,.2);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-note {
+      font-size: .8rem;
+      color: rgba(255,255,255,.45);
+      text-align: center;
+      margin-top: 16px;
+      line-height: 1.5;
+    }
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 32px;
+      color: #fff;
+    }
+    .form-success-icon { font-size: 3rem; margin-bottom: 16px; }
+    .form-success h3 { margin-bottom: 8px; font-size: 1.4rem; }
+    .form-success p { color: rgba(255,255,255,.65); }
+
+    /* ═══════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════ */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 64px 0 32px;
+    }
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer__brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .footer__brand-logo span {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    .footer__tagline {
+      font-size: .9rem;
+      color: var(--text-2);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .footer__contact { display: flex; flex-direction: column; gap: 8px; }
+    .footer__contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .85rem;
+      color: var(--text-2);
+    }
+    .footer__contact-item span:first-child { color: var(--text-3); }
+    .footer__col h4 {
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 20px;
+    }
+    .footer__links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer__links a {
+      font-size: .9rem;
+      color: var(--text-2);
+      transition: color .2s;
+    }
+    .footer__links a:hover { color: var(--green-mid); }
+    .footer__bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer__legal {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .footer__legal a { font-size: .8rem; color: var(--text-3); transition: color .2s; }
+    .footer__legal a:hover { color: var(--text-2); }
+    .footer__copy { font-size: .8rem; color: var(--text-3); }
+    .footer__social {
+      display: flex;
+      gap: 10px;
+    }
+    .footer__social-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .9rem;
+      transition: all .25s;
+      color: var(--text-2);
+    }
+    .footer__social-btn:hover {
+      background: var(--green-pale);
+      color: var(--green-mid);
+      border-color: var(--green-mid);
+    }
+
+    /* ═══════════════════════════════════════
+       STICKY CTA (MOBILE)
+    ═══════════════════════════════════════ */
+    .sticky-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      padding: 16px 20px;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      box-shadow: 0 -8px 32px rgba(0,0,0,.12);
+      display: none;
+      align-items: center;
+      gap: 12px;
+    }
+    .sticky-cta .btn { flex: 1; justify-content: center; }
+    .sticky-cta__price {
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--text-3);
+      white-space: nowrap;
+    }
+
+    /* ═══════════════════════════════════════
+       ANIMATIONS
+    ═══════════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    [data-delay="1"] { transition-delay: .1s; }
+    [data-delay="2"] { transition-delay: .2s; }
+    [data-delay="3"] { transition-delay: .3s; }
+    [data-delay="4"] { transition-delay: .4s; }
+
+    /* ═══════════════════════════════════════
+       MOBILE MENU
+    ═══════════════════════════════════════ */
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      z-index: 998;
+      background: var(--surface);
+      display: flex;
+      flex-direction: column;
+      padding: 88px 32px 32px;
+      gap: 8px;
+      transform: translateX(100%);
+      transition: transform .35s cubic-bezier(.4,0,.2,1);
+    }
+    .mobile-menu.open { transform: none; }
+    .mobile-menu a {
+      padding: 16px 0;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--text-1);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ═══════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .benefits__grid { grid-template-columns: repeat(2, 1fr); }
+      .pricing__grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+      .footer__grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .section { padding: 64px 0; }
+      .nav__links, .nav__actions .btn:not(.nav__cta) { display: none; }
+      .nav__hamburger { display: flex; }
+
+      .hero__grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        padding: 48px 0;
+      }
+      .hero__visual { order: -1; }
+      .hero__stats { flex-wrap: wrap; gap: 24px; }
+      .hero__badge-float--2 { display: none; }
+
+      .story__grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .story__side--before { border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+      .story__side--after  { border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
+      .story__divider { padding: 16px; transform: rotate(90deg); }
+
+      .benefits__grid { grid-template-columns: 1fr; }
+      .how__steps {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .how__steps::before { display: none; }
+      .stats-bar__grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials__grid { grid-template-columns: 1fr; }
+      .reassurance__grid { grid-template-columns: 1fr; }
+
+      .form-grid { grid-template-columns: 1fr; }
+      .form-box { padding: 32px 24px; }
+
+      .footer__grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer__bottom { flex-direction: column; align-items: flex-start; }
+
+      .sticky-cta { display: flex; }
+      body { padding-bottom: 88px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero__ctas { flex-direction: column; }
+      .hero__ctas .btn { width: 100%; justify-content: center; }
+      .container { padding: 0 16px; }
+      .social-proof__logos { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ████████████████████████████████████████
+     NAV
+████████████████████████████████████████ -->
+<nav class="nav" id="nav" role="navigation" aria-label="Navigation principale">
+  <div class="nav__inner">
+    <a href="#" class="nav__logo" aria-label="PozPom — Accueil">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="18" cy="18" r="16" fill="#1A3D2B"/>
+        <path d="M11 21 C11 21 12 13 18 13 C24 13 25 21 25 21" stroke="#FAF7F0" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <circle cx="13.5" cy="21.5" r="3.5" fill="#E8834A"/>
+        <circle cx="22.5" cy="21.5" r="3.5" fill="#4A8C65"/>
+        <circle cx="18" cy="23" r="3" fill="#F5C842"/>
+        <path d="M18 13 C18 13 19 10 21 9" stroke="#4A8C65" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      </svg>
+      <span>PozPom</span>
+    </a>
+
+    <ul class="nav__links" role="list">
+      <li><a href="#benefits">Bénéfices</a></li>
+      <li><a href="#how">Comment ça marche</a></li>
+      <li><a href="#pricing">Offres</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+
+    <div class="nav__actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Basculer le mode sombre">
+        <svg id="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg id="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+      <a href="#trial" class="btn btn--primary nav__cta">Essai gratuit</a>
+      <button class="nav__hamburger" id="hamburgerBtn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu mobile">
+  <a href="#benefits" onclick="closeMobileMenu()">Bénéfices</a>
+  <a href="#how" onclick="closeMobileMenu()">Comment ça marche</a>
+  <a href="#pricing" onclick="closeMobileMenu()">Nos offres</a>
+  <a href="#social" onclick="closeMobileMenu()">Témoignages</a>
+  <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
+  <a href="#trial" onclick="closeMobileMenu()" style="margin-top:16px">
+    <button class="btn btn--primary" style="width:100%">Essai gratuit →</button>
+  </a>
+</div>
+
+
+<!-- ████████████████████████████████████████
+     HERO
+████████████████████████████████████████ -->
+<section class="hero" id="home" aria-labelledby="hero-title">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero__grid">
+
+      <div class="hero__content">
+        <div class="hero__eyebrow">
+          <span class="badge badge--green">
+            <span aria-hidden="true">🌿</span> Producteurs locaux · Montpellier
+          </span>
+          <span class="badge badge--accent">
+            <span aria-hidden="true">🎁</span> 1 box offerte
+          </span>
+        </div>
+
+        <h1 class="display hero__title" id="hero-title">
+          Des fruits <em>frais et locaux</em><br>au cœur de vos bureaux
+        </h1>
+
+        <p class="body-lg hero__subtitle">
+          FruitiBox livre des paniers de fruits frais, de saison et sélectionnés auprès de producteurs locaux directement dans vos locaux à Montpellier. Parce que la QVT commence à la pause café.
+        </p>
+
+        <div class="hero__ctas">
+          <a href="#trial" class="btn btn--accent btn--lg">
+            Recevoir ma box offerte →
+          </a>
+          <a href="#how" class="btn btn--ghost btn--lg">
+            Voir comment ça marche
+          </a>
+        </div>
+
+        <div class="hero__stats" role="list">
+          <div class="hero__stat" role="listitem">
+            <span class="hero__stat-value">29 €</span>
+            <span class="hero__stat-label">par semaine dès</span>
+          </div>
+          <div class="hero__stat" role="listitem">
+            <span class="hero__stat-value">5+</span>
+            <span class="hero__stat-label">variétés / livraison</span>
+          </div>
+          <div class="hero__stat" role="listitem">
+            <span class="hero__stat-value">0</span>
+            <span class="hero__stat-label">engagement requis</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__visual" aria-hidden="true">
+        <div class="hero__badge-float hero__badge-float--1">
+          <div class="hbf-icon">⚡</div>
+          <div class="hbf-text">Livraison express</div>
+          <div class="hbf-sub">Même dans l'urgence</div>
+        </div>
+
+        <div class="hero__card-main">
+          <div class="hero__fruit-grid" role="list" aria-label="Exemple de fruits dans une FruitiBox">
+            <div class="hero__fruit-item" role="listitem" aria-label="Pomme">
+              🍎
+              <div class="hero__fruit-label">Pomme</div>
+            </div>
+            <div class="hero__fruit-item" role="listitem" aria-label="Poire">
+              🍐
+              <div class="hero__fruit-label">Poire</div>
+            </div>
+            <div class="hero__fruit-item" role="listitem" aria-label="Banane">
+              🍌
+              <div class="hero__fruit-label">Banane</div>
+            </div>
+            <div class="hero__fruit-item" role="listitem" aria-label="Orange">
+              🍊
+              <div class="hero__fruit-label">Orange</div>
+            </div>
+            <div class="hero__fruit-item" role="listitem" aria-label="Raisin">
+              🍇
+              <div class="hero__fruit-label">Raisin</div>
+            </div>
+            <div class="hero__fruit-item" role="listitem" aria-label="Kiwi">
+              🥝
+              <div class="hero__fruit-label">Kiwi</div>
+            </div>
+          </div>
+
+          <div style="border-top: 1px solid var(--border); padding-top: 20px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+              <span class="caption text-3">FruitiBox · Formule Essentielle</span>
+              <span class="badge badge--green">5 kg min.</span>
+            </div>
+            <div class="hero__card-price">
+              <span class="price-big">29 €</span>
+              <span class="price-per">/semaine</span>
+            </div>
+            <p class="hero__card-tag body-sm text-3">5 variétés · Sans engagement · Pause possible</p>
+          </div>
+        </div>
+
+        <div class="hero__badge-float hero__badge-float--2">
+          <div class="hbf-icon">🏅</div>
+          <div class="hbf-text">Producteurs locaux</div>
+          <div class="hbf-sub">Hérault & alentours</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ████████████████████████████████████████
+     STORYTELLING — AVANT / APRÈS
+████████████████████████████████████████ -->
+<section class="story section--sm" aria-labelledby="story-heading">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:48px;">
+      <span class="caption text-3">La pause bureau, réinventée</span>
+      <h2 class="heading-1" style="margin-top:8px" id="story-heading">Avant… et après PozPom</h2>
+    </div>
+
+    <div class="story__grid reveal">
+      <div class="story__side story__side--before">
+        <p class="story__label">Avant</p>
+        <ul class="story__items">
+          <li class="story__item">
+            <span class="story__item-icon">😔</span>
+            <span>Distributeur de snacks sucrés et boissons énergisantes dans la salle de pause</span>
+          </li>
+          <li class="story__item">
+            <span class="story__item-icon">😩</span>
+            <span>Coups de fatigue en milieu d'après-midi, productivité en berne</span>
+          </li>
+          <li class="story__item">
+            <span class="story__item-icon">😐</span>
+            <span>Aucun signal fort de bien-être envoyé aux collaborateurs</span>
+          </li>
+          <li class="story__item">
+            <span class="story__item-icon">🤷</span>
+            <span>Logistique d'approvisionnement chronophage et peu valorisante</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="story__divider" aria-hidden="true">
+        <div class="story__arrow">→</div>
+      </div>
+
+      <div class="story__side story__side--after">
+        <p class="story__label">Avec PozPom</p>
+        <ul class="story__items">
+          <li class="story__item">
+            <span class="story__item-icon">🍊</span>
+            <span>Panier de fruits frais et colorés qui accueille chaque journée de travail</span>
+          </li>
+          <li class="story__item">
+            <span class="story__item-icon">⚡</span>
+            <span>Énergie naturelle et durable, concentration maintenue tout l'après-midi</span>
+          </li>
+          <li class="story__item">
+            <span class="story__item-icon">❤️</span>
+            <span>Un geste concret pour la santé et le bien-être de vos équipes</span>
+          </li>
+          <li class="story__item">
+            <span class="story__item-icon">✅</span>
+            <span>Livraison gérée de A à Z, zéro effort de votre côté</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ████████████████████████████████████████
+     STATS BAR
+████████████████████████████████████████ -->
+<div class="stats-bar" role="region" aria-label="Chiffres clés">
+  <div class="container">
+    <div class="stats-bar__grid">
+      <div class="stat-item reveal">
+        <div class="stat-item__value" data-count="120">120+</div>
+        <div class="stat-item__label">entreprises livrées à Montpellier</div>
+      </div>
+      <div class="stat-item reveal" data-delay="1">
+        <div class="stat-item__value" data-count="98">98 %</div>
+        <div class="stat-item__label">de taux de satisfaction client</div>
+      </div>
+      <div class="stat-item reveal" data-delay="2">
+        <div class="stat-item__value" data-count="5">5 kg</div>
+        <div class="stat-item__label">minimum par livraison</div>
+      </div>
+      <div class="stat-item reveal" data-delay="3">
+        <div class="stat-item__value" data-count="0">0 €</div>
+        <div class="stat-item__label">d'engagement ou frais cachés</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ████████████████████████████████████████
+     BENEFITS
+████████████████████████████████████████ -->
+<section class="section" id="benefits" aria-labelledby="benefits-heading">
+  <div class="container">
+    <header class="section-header">
+      <span class="badge badge--green">Pourquoi PozPom ?</span>
+      <h2 class="heading-1" id="benefits-heading">Un investissement QVT à fort retour</h2>
+      <p class="body-lg">Offrir des fruits frais à vos collaborateurs, c'est concret, visible, apprécié — et ça ne vous prend aucune énergie.</p>
+    </header>
+
+    <div class="benefits__grid">
+      <article class="benefit-card reveal">
+        <div class="benefit-icon" aria-hidden="true">🧠</div>
+        <h3 class="heading-3">Productivité & concentration</h3>
+        <p>Les fruits frais réduisent les pics glycémiques et favorisent une énergie stable. Vos équipes restent concentrées plus longtemps, sans coup de barre.</p>
+      </article>
+      <article class="benefit-card reveal" data-delay="1">
+        <div class="benefit-icon" aria-hidden="true">🌟</div>
+        <h3 class="heading-3">Marque employeur renforcée</h3>
+        <p>Un avantage en nature visible et sain. Vos talents le mentionneront sur LinkedIn, vos candidats le noteront lors des entretiens. Un signal fort de culture d'entreprise.</p>
+      </article>
+      <article class="benefit-card reveal" data-delay="2">
+        <div class="benefit-icon" aria-hidden="true">🤝</div>
+        <h3 class="heading-3">Cohésion d'équipe</h3>
+        <p>La pause fruit crée des moments informels qui rapprochent les équipes. Un espace de convivialité spontané autour d'un panier coloré et appétissant.</p>
+      </article>
+      <article class="benefit-card reveal">
+        <div class="benefit-icon" aria-hidden="true">🌿</div>
+        <h3 class="heading-3">Engagement RSE concret</h3>
+        <p>Fruits de producteurs locaux de l'Hérault, filière courte, saisonnalité respectée. Un argument RSE authentique que vous pouvez revendiquer fièrement.</p>
+      </article>
+      <article class="benefit-card reveal" data-delay="1">
+        <div class="benefit-icon" aria-hidden="true">⚙️</div>
+        <h3 class="heading-3">Zéro friction pour vos équipes</h3>
+        <p>Aucune gestion logistique, pas de commande à passer, pas de stock à gérer. Vous choisissez votre fréquence, nous faisons le reste — semaine après semaine.</p>
+      </article>
+      <article class="benefit-card reveal" data-delay="2">
+        <div class="benefit-icon" aria-hidden="true">📊</div>
+        <h3 class="heading-3">Avantage CE & fiscalité</h3>
+        <p>Les paniers de fruits sont éligibles aux budgets CE/CSE et QVT. Ils peuvent être pris en charge partiellement ou totalement, selon votre structure.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- ████████████████████████████████████████
+     HOW IT WORKS
+████████████████████████████████████████ -->
+<section class="section how" id="how" aria-labelledby="how-heading">
+  <div class="container">
+    <header class="section-header">
+      <span class="badge badge--accent">Simple & rapide</span>
+      <h2 class="heading-1" id="how-heading">Livré en 3 étapes</h2>
+      <p>Pas de formulaire complexe, pas de délai interminable. Votre première box peut arriver dès cette semaine.</p>
+    </header>
+
+    <div class="how__steps">
+      <article class="step reveal">
+        <div class="step__number" aria-hidden="true">1</div>
+        <h3 class="heading-3" style="margin-bottom:12px">Choisissez votre formule</h3>
+        <p>Sélectionnez la quantité, la fréquence (1 à 5 fois/semaine) et votre type de fruits. Tout est modulable, sans contrat ni engagement à long terme.</p>
+      </article>
+      <article class="step reveal" data-delay="1">
+        <div class="step__number" aria-hidden="true">2</div>
+        <h3 class="heading-3" style="margin-bottom:12px">Nous préparons votre box</h3>
+        <p>Notre équipe sélectionne les meilleurs fruits du moment auprès de nos producteurs partenaires de l'Hérault et des départements voisins.</p>
+      </article>
+      <article class="step reveal" data-delay="2">
+        <div class="step__number" aria-hidden="true">3</div>
+        <h3 class="heading-3" style="margin-bottom:12px">Livraison dans vos locaux</h3>
+        <p>Votre FruitiBox est livrée directement à l'adresse de vos bureaux, aux horaires qui vous conviennent. Vous n'avez rien à faire.</p>
+      </article>
+    </div>
+
+    <div style="text-align:center; margin-top:56px;">
+      <a href="#trial" class="btn btn--primary btn--lg reveal">
+        Commencer maintenant — 1ère box offerte
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ████████████████████████████████████████
+     PRICING
+████████████████████████████████████████ -->
+<section class="section" id="pricing" aria-labelledby="pricing-heading">
+  <div class="container">
+    <header class="section-header">
+      <span class="badge badge--green">Tarifs transparents</span>
+      <h2 class="heading-1" id="pricing-heading">Une formule pour chaque équipe</h2>
+      <p>Pas de frais cachés, pas d'engagement. Vous adaptez votre formule à tout moment, et vous pouvez suspendre en un clic.</p>
+    </header>
+
+    <div class="pricing__grid">
+
+      <article class="pricing-card reveal">
+        <div class="pricing-card__freq">1 × par semaine</div>
+        <div class="pricing-card__price">
+          <span class="pricing-card__price-big">29 €</span>
+          <span class="pricing-card__price-per">/semaine</span>
+        </div>
+        <p class="pricing-card__desc">Idéale pour les petites équipes ou pour découvrir le service sans engagement.</p>
+        <ul class="pricing-card__features">
+          <li class="pricing-card__feat">
+            <span class="feat-check" aria-hidden="true">✓</span>
+            <span>5 kg de fruits minimum</span>
+          </li>
+          <li class="pricing-card__feat">
+            <span class="feat-check" aria-hidden="true">✓</span>
+            <span>5 variétés ou plus</span>
+          </li>
+          <li class="pricing-card__feat">
+            <span class="feat-check" aria-hidden="true">✓</span>
+            <span>Sans engagement</span>
+          </li>
+          <li class="pricing-card__feat">
+            <span class="feat-check" aria-hidden="true">✓</span>
+            <span>Suspension à tout moment</span>
+          </li>
+        </ul>
+        <a href="#trial" class="btn btn--ghost" style="width:100%; justify-content:center">Essayer gratuitement</a>
+      </article>
+
+      <article class="pricing-card pricing-card--featured reveal" data-delay="1">
+        <div class="pricing-card__badge">Le plus populaire</div>
+        <div class="pricing-card__freq">3 × par semaine</div>
+        <div class="pricing-card__price">
+          <span class="pricing-card__price-big" style="color:#fff">79 €</span>
+          <span class="pricing-card__price-per">/semaine</span>
+        </div>
+        <p class="pricing-card__desc">La formule préférée des équipes de 10 à 50 personnes qui veulent une vraie dynamique bien-être.</p>
+        <ul class="pricing-card__features">
+          <li class="pricing-card__feat">
+            <span class="feat-check" aria-hidden="true">✓</span>
+            <span>5 kg minimum / livraison</span>
+          </li>
+          <li class="pricing-card__feat">
+            <span class="feat-check" aria-hidden="true">✓</span>
+            <span>6+ variétés saisonnières</span>
+          </li>
+          <li class="pricing-card__feat">
+            <span class="feat-check" aria-hidden="true">✓</span>
+            <span>Fruits exotiques inclus</span>
+          </li>
+          <li class="pricing-card__feat">
+            <span class="feat-check" aria-hidden="true">✓</span>
+            <span>Rapport QVT mensuel</span>
+          </li>
+          <li class="pricing-card__feat">
+            <span class="feat-check" aria-hidden="true">✓</span>
+            <span>Sans engagement · Pause possible</span>
+          </li>
+        </ul>
+        <a href="#trial" class="btn btn--accent" style="width:100%; justify-content:center">Commencer maintenant</a>
+      </article>
+
+      <article class="pricing-card reveal" data-delay="2">
+        <div class="pricing-card__freq">5 × par semaine</div>
+        <div class="pricing-card__price">
+          <span class="pricing-card__price-big">Sur devis</span>
+        </div>
+        <p class="pricing-card__desc">Pour les grands sites ou les entreprises qui souhaitent une offre sur mesure et une relation dédiée.</p>
+        <ul class="pricing-card__features">
+          <li class="pricing-card__feat">
+            <span class="feat-check" aria-hidden="true">✓</span>
+            <span>Volume et variétés sur mesure</span>
+          </li>
+          <li class="pricing-card__feat">
+            <span class="feat-check" aria-hidden="true">✓</span>
+            <span>Livraison quotidienne</span>
+          </li>
+          <li class="pricing-card__feat">
+            <span class="feat-check" aria-hidden="true">✓</span>
+            <span>Interlocuteur dédié</span>
+          </li>
+          <li class="pricing-card__feat">
+            <span class="feat-check" aria-hidden="true">✓</span>
+            <span>Facturation CE/CSE facilitée</span>
+          </li>
+        </ul>
+        <a href="#trial" class="btn btn--ghost" style="width:100%; justify-content:center">Demander un devis</a>
+      </article>
+
+    </div>
+
+    <div style="text-align:center; margin-top:40px;">
+      <p class="body-sm text-3">Tous les prix sont HT. Livraison offerte sur Montpellier et agglomération. Suspension ou résiliation sans frais ni préavis.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ████████████████████████████████████████
+     REASSURANCE
+████████████████████████████████████████ -->
+<section class="section reassurance" aria-labelledby="reassurance-heading">
+  <div class="container">
+    <header class="section-header">
+      <span class="badge badge--outline">Engagements PozPom</span>
+      <h2 class="heading-1" id="reassurance-heading">Vous êtes entre de bonnes mains</h2>
+      <p>Des garanties concrètes pour que vous puissiez vous lancer en toute confiance.</p>
+    </header>
+
+    <div class="reassurance__grid">
+      <div class="reassurance-item reveal">
+        <div class="reassurance-item__icon" aria-hidden="true">🔓</div>
+        <div>
+          <h3>Zéro engagement</h3>
+          <p>Aucun contrat à signer, aucune durée minimale. Vous pouvez arrêter ou suspendre votre livraison à tout moment, en quelques secondes depuis votre espace client.</p>
+        </div>
+      </div>
+      <div class="reassurance-item reveal" data-delay="1">
+        <div class="reassurance-item__icon" aria-hidden="true">⚡</div>
+        <div>
+          <h3>Service express disponible</h3>
+          <p>Besoin d'une livraison pour un événement d'entreprise, un comité de direction ou une journée d'intégration ? Nous gérons les demandes urgentes avec réactivité.</p>
+        </div>
+      </div>
+      <div class="reassurance-item reveal" data-delay="2">
+        <div class="reassurance-item__icon" aria-hidden="true">🏡</div>
+        <div>
+          <h3>Producteurs majoritairement locaux</h3>
+          <p>Nous sourceons nos fruits en priorité auprès de producteurs de l'Hérault et des départements voisins. Filière courte, fraîcheur maximale, impact local fort.</p>
+        </div>
+      </div>
+      <div class="reassurance-item reveal" data-delay="3">
+        <div class="reassurance-item__icon" aria-hidden="true">📦</div>
+        <div>
+          <h3>5 variétés garanties minimum</h3>
+          <p>Chaque FruitiBox contient au minimum 5 variétés de fruits différentes, sélectionnées selon la saison. Jamais monotone, toujours frais et appétissant.</p>
+        </div>
+      </div>
+      <div class="reassurance-item reveal">
+        <div class="reassurance-item__icon" aria-hidden="true">💬</div>
+        <div>
+          <h3>Interlocuteur humain et réactif</h3>
+          <p>Une vraie équipe Montpelliéraine disponible par téléphone, email ou WhatsApp. Pas de chatbot, pas de ticket numéroté. Une relation de proximité réelle.</p>
+        </div>
+      </div>
+      <div class="reassurance-item reveal" data-delay="1">
+        <div class="reassurance-item__icon" aria-hidden="true">🎁</div>
+        <div>
+          <h3>Première box 100 % offerte</h3>
+          <p>Testez sans risque. Votre première FruitiBox est entièrement offerte, aucune carte de crédit requise à l'inscription. Vous payez seulement si vous êtes convaincu.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ████████████████████████████████████████
+     SOCIAL PROOF
+████████████████████████████████████████ -->
+<section class="section" id="social" aria-labelledby="social-heading">
+  <div class="container">
+    <header class="section-header">
+      <span class="badge badge--green">Ils nous font confiance</span>
+      <h2 class="heading-1" id="social-heading">Rejoignez plus de 120 entreprises<br>de la région montpelliéraine</h2>
+    </header>
+
+    <div class="social-proof__logos" role="list" aria-label="Logos d'entreprises clientes">
+      <span class="logo-item" role="listitem">Meridia Tech</span>
+      <span class="logo-dot" aria-hidden="true"></span>
+      <span class="logo-item" role="listitem">Helios Conseil</span>
+      <span class="logo-dot" aria-hidden="true"></span>
+      <span class="logo-item" role="listitem">Studio Azur</span>
+      <span class="logo-dot" aria-hidden="true"></span>
+      <span class="logo-item" role="listitem">Noveria RH</span>
+      <span class="logo-dot" aria-hidden="true"></span>
+      <span class="logo-item" role="listitem">Coralys Santé</span>
+      <span class="logo-dot" aria-hidden="true"></span>
+      <span class="logo-item" role="listitem">Arkos Immo</span>
+      <span class="logo-dot" aria-hidden="true"></span>
+      <span class="logo-item" role="listitem">Lumina Digital</span>
+    </div>
+
+    <div class="testimonials__grid">
+      <article class="testimonial-card reveal">
+        <div class="testimonial-card__stars" aria-label="5 étoiles sur 5">★★★★★</div>
+        <blockquote class="testimonial-card__quote">
+          "Depuis qu'on a PozPom, la pause de 10h est devenue un vrai moment convivial. Les équipes adorent découvrir les nouveaux fruits chaque semaine. Ça semble tout bête, mais l'impact sur l'ambiance est réel."
+        </blockquote>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar" aria-hidden="true">👩‍💼</div>
+          <div>
+            <div class="testimonial-card__name">Sophie M.</div>
+            <div class="testimonial-card__role">DRH · Meridia Tech, 45 collaborateurs</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="testimonial-card reveal" data-delay="1">
+        <div class="testimonial-card__stars" aria-label="5 étoiles sur 5">★★★★★</div>
+        <blockquote class="testimonial-card__quote">
+          "On cherchait un argument QVT concret pour nos entretiens de recrutement. La FruitiBox est maintenant mentionnée dans toutes nos offres d'emploi. Plusieurs candidats nous ont dit que ça avait pesé dans leur décision."
+        </blockquote>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar" aria-hidden="true">👨‍💼</div>
+          <div>
+            <div class="testimonial-card__name">Thomas L.</div>
+            <div class="testimonial-card__role">Office Manager · Lumina Digital, 28 collaborateurs</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="testimonial-card reveal" data-delay="2">
+        <div class="testimonial-card__stars" aria-label="5 étoiles sur 5">★★★★★</div>
+        <blockquote class="testimonial-card__quote">
+          "En tant que responsable CSE, j'avais besoin d'une solution simple à gérer et appréciée de tous. PozPom coche toutes les cases : local, frais, sans contrainte, et les collaborateurs sont ravis. Je recommande sans hésitation."
+        </blockquote>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar" aria-hidden="true">👩</div>
+          <div>
+            <div class="testimonial-card__name">Isabelle D.</div>
+            <div class="testimonial-card__role">Présidente CSE · Coralys Santé, 80 salariés</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- ████████████████████████████████████████
+     FAQ
+████████████████████████████████████████ -->
+<section class="section faq" id="faq" aria-labelledby="faq-heading">
+  <div class="container">
+    <header class="section-header">
+      <span class="badge badge--outline">Questions fréquentes</span>
+      <h2 class="heading-1" id="faq-heading">Tout ce que vous devez savoir</h2>
+    </header>
+
+    <div class="faq__list" role="list">
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-item__q" aria-expanded="false" onclick="toggleFaq(this)">
+          Quelle est la quantité minimale de commande ?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-item__a" role="region">
+          <div class="faq-item__a-inner">
+            La FruitiBox démarre à partir de 5 kg de fruits frais par livraison, ce qui correspond généralement à une équipe de 5 à 10 personnes. Si votre équipe est plus grande, nous adaptons simplement les quantités — et le prix au kilo devient encore plus avantageux.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-item__q" aria-expanded="false" onclick="toggleFaq(this)">
+          Est-ce qu'il y a un engagement contractuel ?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-item__a" role="region">
+          <div class="faq-item__a-inner">
+            Non, absolument aucun. Pas de contrat à durée déterminée, pas de frais de résiliation. Vous pouvez suspendre, modifier ou arrêter votre livraison à tout moment, directement depuis votre espace client ou par simple email à notre équipe.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-item__q" aria-expanded="false" onclick="toggleFaq(this)">
+          Puis-je choisir les fruits dans ma box ?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-item__a" role="region">
+          <div class="faq-item__a-inner">
+            La composition de la box varie chaque semaine selon la saison et les arrivages de nos producteurs locaux, ce qui garantit une fraîcheur optimale. Vous pouvez nous indiquer des préférences ou des allergies — nous en tenons compte. En formule Premium ou sur devis, nous pouvons personnaliser davantage.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-item__q" aria-expanded="false" onclick="toggleFaq(this)">
+          Livrez-vous en dehors de Montpellier ?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-item__a" role="region">
+          <div class="faq-item__a-inner">
+            Nous livrons Montpellier et l'ensemble de l'agglomération (Lattes, Castelnau-le-Lez, Clapiers, Jacou, Saint-Clément, Vendargues, etc.) sans frais supplémentaires. Pour des adresses plus éloignées, contactez-nous — nous étudions chaque demande au cas par cas.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-item__q" aria-expanded="false" onclick="toggleFaq(this)">
+          Que se passe-t-il si je dois suspendre pendant les congés d'été ?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-item__a" role="region">
+          <div class="faq-item__a-inner">
+            Aucun problème. La suspension est gratuite et illimitée. Connectez-vous à votre espace client, indiquez les dates de pause, et votre service reprend automatiquement à la date de retour que vous aurez choisie. Pas de gaspillage, pas de facturation pendant l'absence.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-item__q" aria-expanded="false" onclick="toggleFaq(this)">
+          Comment fonctionne la première box offerte ?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-item__a" role="region">
+          <div class="faq-item__a-inner">
+            Remplissez le formulaire de demande sur cette page. Nous vous contactons sous 24h pour définir la taille de votre box, votre créneau de livraison et les préférences de votre équipe. Votre première livraison est entièrement offerte — aucune carte bancaire requise à l'inscription.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-item__q" aria-expanded="false" onclick="toggleFaq(this)">
+          Puis-je bénéficier d'une facturation via notre CE/CSE ?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-item__a" role="region">
+          <div class="faq-item__a-inner">
+            Oui, tout à fait. Nous émettons des factures au format CE/CSE sur demande et pouvons adapter notre facturation à vos processus internes. Les paniers de fruits frais en entreprise entrent généralement dans le budget "actions de qualité de vie au travail" — votre représentant du personnel pourra vous confirmer l'éligibilité.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ████████████████████████████████████████
+     FORM — FREE TRIAL
+████████████████████████████████████████ -->
+<section class="section form-section" id="trial" aria-labelledby="form-heading">
+  <div class="container">
+    <header class="section-header">
+      <span class="badge badge--green">Sans engagement · Sans CB</span>
+      <h2 class="heading-1" id="form-heading">Recevez votre première FruitiBox offerte</h2>
+      <p>Remplissez ce formulaire en 2 minutes. Notre équipe vous rappelle sous 24h pour organiser votre livraison d'essai — entièrement gratuite.</p>
+    </header>
+
+    <div class="form-box reveal">
+      <form id="trialForm" novalidate aria-label="Formulaire de demande d'essai gratuit">
+        <div id="formContent">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="firstName">Prénom *</label>
+              <input type="text" id="firstName" name="firstName" placeholder="Marie" required autocomplete="given-name" />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Nom *</label>
+              <input type="text" id="lastName" name="lastName" placeholder="Dupont" required autocomplete="family-name" />
+            </div>
+            <div class="form-group">
+              <label for="company">Entreprise *</label>
+              <input type="text" id="company" name="company" placeholder="Acme SAS" required autocomplete="organization" />
+            </div>
+            <div class="form-group">
+              <label for="role">Votre rôle</label>
+              <select id="role" name="role">
+                <option value="">Sélectionner…</option>
+                <option>Dirigeant(e)</option>
+                <option>Responsable RH</option>
+                <option>Office Manager</option>
+                <option>Responsable CE / CSE</option>
+                <option>Responsable QVT</option>
+                <option>Autre</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="email">Email professionnel *</label>
+              <input type="email" id="email" name="email" placeholder="marie@acme.fr" required autocomplete="email" />
+            </div>
+            <div class="form-group">
+              <label for="phone">Téléphone *</label>
+              <input type="tel" id="phone" name="phone" placeholder="06 12 34 56 78" required autocomplete="tel" />
+            </div>
+            <div class="form-group">
+              <label for="employees">Nombre de collaborateurs</label>
+              <select id="employees" name="employees">
+                <option value="">Sélectionner…</option>
+                <option>Moins de 10</option>
+                <option>10 – 25</option>
+                <option>25 – 50</option>
+                <option>50 – 100</option>
+                <option>Plus de 100</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="frequency">Fréquence souhaitée</label>
+              <select id="frequency" name="frequency">
+                <option value="">Sélectionner…</option>
+                <option>1 fois / semaine</option>
+                <option>2 fois / semaine</option>
+                <option>3 fois / semaine</option>
+                <option>4 fois / semaine</option>
+                <option>5 fois / semaine</option>
+                <option>Je ne sais pas encore</option>
+              </select>
+            </div>
+            <div class="form-group form-group--full">
+              <label for="message">Questions ou précisions</label>
+              <textarea id="message" name="message" placeholder="Dites-nous si vous avez des préférences de fruits, des allergies dans l'équipe, ou une date de livraison souhaitée…"></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn btn--accent btn--lg" style="width:100%; justify-content:center; margin-top:8px">
+            Recevoir ma box offerte →
+          </button>
+          <p class="form-note">
+            En soumettant ce formulaire, vous acceptez d'être recontacté par l'équipe PozPom.<br>
+            Aucun engagement, aucune carte bancaire requise.
+          </p>
+        </div>
+
+        <div class="form-success" id="formSuccess" role="alert" aria-live="polite">
+          <div class="form-success-icon" aria-hidden="true">🎉</div>
+          <h3>Demande reçue !</h3>
+          <p>Merci <span id="successName"></span>. Notre équipe vous contactera sous 24h pour organiser votre première FruitiBox offerte. À très vite !</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+<!-- ████████████████████████████████████████
+     FOOTER
+████████████████████████████████████████ -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+
+      <div>
+        <div class="footer__brand-logo">
+          <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="18" cy="18" r="16" fill="#1A3D2B"/>
+            <path d="M11 21 C11 21 12 13 18 13 C24 13 25 21 25 21" stroke="#FAF7F0" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <circle cx="13.5" cy="21.5" r="3.5" fill="#E8834A"/>
+            <circle cx="22.5" cy="21.5" r="3.5" fill="#4A8C65"/>
+            <circle cx="18" cy="23" r="3" fill="#F5C842"/>
+            <path d="M18 13 C18 13 19 10 21 9" stroke="#4A8C65" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          </svg>
+          <span>PozPom</span>
+        </div>
+        <p class="footer__tagline">
+          Des fruits frais et locaux livrés en entreprise à Montpellier. La QVT commence à la pause café.
+        </p>
+        <address class="footer__contact" style="font-style:normal">
+          <div class="footer__contact-item">
+            <span aria-hidden="true">📍</span>
+            <span>Montpellier & agglomération (34)</span>
+          </div>
+          <div class="footer__contact-item">
+            <span aria-hidden="true">📞</span>
+            <span><a href="tel:+33499000000">04 99 00 00 00</a></span>
+          </div>
+          <div class="footer__contact-item">
+            <span aria-hidden="true">✉️</span>
+            <span><a href="mailto:bonjour@pozpom.fr">bonjour@pozpom.fr</a></span>
+          </div>
+        </address>
+      </div>
+
+      <div class="footer__col">
+        <h4>Service</h4>
+        <ul class="footer__links" role="list">
+          <li><a href="#how">Comment ça marche</a></li>
+          <li><a href="#pricing">Nos formules</a></li>
+          <li><a href="#trial">Essai gratuit</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Entreprise</h4>
+        <ul class="footer__links" role="list">
+          <li><a href="#">À propos</a></li>
+          <li><a href="#">Nos producteurs</a></li>
+          <li><a href="#">Nos engagements RSE</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Suivez-nous</h4>
+        <div class="footer__social" style="margin-bottom:20px" aria-label="Réseaux sociaux">
+          <a href="#" class="footer__social-btn" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" class="footer__social-btn" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
+          </a>
+          <a href="#" class="footer__social-btn" aria-label="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+        </div>
+        <ul class="footer__links" role="list">
+          <li><a href="#">SIRET : 123 456 789 00012</a></li>
+          <li><a href="#">Livraison durable 🌿</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copy">© 2026 PozPom SAS — Tous droits réservés</p>
+      <nav class="footer__legal" aria-label="Liens légaux">
+        <a href="#">Mentions légales</a>
+        <a href="#">Politique de confidentialité</a>
+        <a href="#">CGV</a>
+        <a href="#">Cookies</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ████████████████████████████████████████
+     STICKY CTA (MOBILE)
+████████████████████████████████████████ -->
+<div class="sticky-cta" id="stickyCta" role="complementary" aria-label="Action rapide">
+  <div>
+    <span class="sticky-cta__price">dès 29 €/sem.</span>
+  </div>
+  <a href="#trial" class="btn btn--accent" onclick="document.getElementById('stickyCta').style.display='none'">
+    Box gratuite →
+  </a>
+</div>
+
+
+<!-- ████████████████████████████████████████
+     JAVASCRIPT
+████████████████████████████████████████ -->
+<script>
+  /* ── Dark mode ── */
+  const html = document.documentElement;
+  const toggle = document.getElementById('themeToggle');
+  const sunIcon = document.getElementById('sun-icon');
+  const moonIcon = document.getElementById('moon-icon');
+
+  const savedTheme = localStorage.getItem('pozpom-theme') ||
+    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  setTheme(savedTheme);
+
+  function setTheme(t) {
+    html.setAttribute('data-theme', t);
+    localStorage.setItem('pozpom-theme', t);
+    sunIcon.style.display  = t === 'dark' ? 'none'  : 'block';
+    moonIcon.style.display = t === 'dark' ? 'block' : 'none';
+  }
+
+  toggle.addEventListener('click', () => {
+    setTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  /* ── Nav scroll ── */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  /* ── Mobile menu ── */
+  const hamburger = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  /* ── FAQ ── */
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+
+    document.querySelectorAll('.faq-item.open').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('button').setAttribute('aria-expanded', 'false');
+    });
+
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  /* ── Scroll reveal ── */
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  revealEls.forEach(el => observer.observe(el));
+
+  /* ── Sticky CTA hide on trial section ── */
+  const stickyCta = document.getElementById('stickyCta');
+  const trialSection = document.getElementById('trial');
+  const ctaObserver = new IntersectionObserver(entries => {
+    stickyCta.style.display = entries[0].isIntersecting ? 'none' : '';
+  }, { threshold: 0.1 });
+  ctaObserver.observe(trialSection);
+
+  /* ── Form submission ── */
+  document.getElementById('trialForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const firstName = document.getElementById('firstName').value.trim();
+    const email     = document.getElementById('email').value.trim();
+    const phone     = document.getElementById('phone').value.trim();
+    const company   = document.getElementById('company').value.trim();
+
+    if (!firstName || !email || !phone || !company) {
+      const missing = [
+        !firstName && 'prénom',
+        !email     && 'email',
+        !phone     && 'téléphone',
+        !company   && 'entreprise'
+      ].filter(Boolean).join(', ');
+      alert(`Merci de remplir les champs obligatoires : ${missing}.`);
+      return;
+    }
+
+    const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRx.test(email)) {
+      alert('Veuillez entrer une adresse email valide.');
+      return;
+    }
+
+    document.getElementById('formContent').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+    document.getElementById('successName').textContent = firstName;
+
+    window.scrollTo({ top: document.getElementById('trial').offsetTop - 80, behavior: 'smooth' });
+  });
+
+  /* ── Smooth anchor scroll with nav offset ── */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = nav.offsetHeight + 16;
+        window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
+      }
+    });
+  });
+
+  /* ── Fruit hover ripple on hero ── */
+  document.querySelectorAll('.hero__fruit-item').forEach(item => {
+    item.addEventListener('mouseenter', () => {
+      item.style.background = 'var(--green-pale)';
+    });
+    item.addEventListener('mouseleave', () => {
+      item.style.background = 'var(--surface-2)';
+    });
+  });
+</script>
+
+</body>
+</html>
