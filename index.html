@@ -1227,55 +1227,88 @@
       .benefits__grid { grid-template-columns: repeat(2, 1fr); }
       .pricing__grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
       .footer__grid { grid-template-columns: 1fr 1fr; }
+      .testimonials__grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 768px) {
-      .section { padding: 64px 0; }
-      .nav__links, .nav__actions .btn:not(.nav__cta) { display: none; }
+      .section { padding: 56px 0; }
+      .section-header { margin-bottom: 40px; }
+
+      /* Nav : masquer liens, CTA et theme toggle — garder uniquement hamburger */
+      .nav__links { display: none; }
+      .theme-toggle { display: none; }
+      .nav__actions .nav__cta { display: none; }
       .nav__hamburger { display: flex; }
 
+      /* Hero */
       .hero__grid {
         grid-template-columns: 1fr;
-        gap: 48px;
-        padding: 48px 0;
+        gap: 32px;
+        padding: 40px 0 24px;
       }
       .hero__visual { order: -1; }
-      .hero__stats { flex-wrap: wrap; gap: 24px; }
-      .hero__badge-float--2 { display: none; }
+      .hero__badge-float { display: none; }
+      .hero__card-main { padding: 24px; }
+      .hero__fruit-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 16px; }
+      .hero__stats { flex-wrap: wrap; gap: 20px; }
+      .hero__ctas { flex-direction: column; }
+      .hero__ctas .btn { width: 100%; justify-content: center; }
 
-      .story__grid {
-        grid-template-columns: 1fr;
-        gap: 0;
-      }
+      /* Story */
+      .story__grid { grid-template-columns: 1fr; }
+      .story__side { padding: 32px 24px; }
       .story__side--before { border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
       .story__side--after  { border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
-      .story__divider { padding: 16px; transform: rotate(90deg); }
+      .story__divider { padding: 12px; }
+      .story__arrow { transform: rotate(90deg); }
 
+      /* Grids */
       .benefits__grid { grid-template-columns: 1fr; }
-      .how__steps {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
+      .how__steps { grid-template-columns: 1fr; gap: 28px; }
       .how__steps::before { display: none; }
-      .stats-bar__grid { grid-template-columns: repeat(2, 1fr); }
+      .step { text-align: left; display: flex; gap: 20px; align-items: flex-start; }
+      .step__number { margin: 0; flex-shrink: 0; }
+      .stats-bar__grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
       .testimonials__grid { grid-template-columns: 1fr; }
       .reassurance__grid { grid-template-columns: 1fr; }
 
+      /* Social proof logos */
+      .social-proof__logos { gap: 16px; padding: 20px 16px; }
+      .logo-dot { display: none; }
+      .logo-item { font-size: .85rem; }
+
+      /* Pricing */
+      .pricing__grid { max-width: 100%; }
+
+      /* Form */
       .form-grid { grid-template-columns: 1fr; }
-      .form-box { padding: 32px 24px; }
+      .form-box { padding: 28px 20px; border-radius: var(--radius-lg); }
 
-      .footer__grid { grid-template-columns: 1fr; gap: 32px; }
-      .footer__bottom { flex-direction: column; align-items: flex-start; }
+      /* Footer */
+      .footer__grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer__bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .footer__legal { gap: 16px; }
 
+      /* Sticky CTA */
       .sticky-cta { display: flex; }
-      body { padding-bottom: 88px; }
+      body { padding-bottom: 80px; }
     }
 
     @media (max-width: 480px) {
-      .hero__ctas { flex-direction: column; }
-      .hero__ctas .btn { width: 100%; justify-content: center; }
       .container { padding: 0 16px; }
-      .social-proof__logos { gap: 24px; }
+      .section { padding: 48px 0; }
+      .display { font-size: 2rem; }
+      .heading-1 { font-size: 1.6rem; }
+      .hero__card-main { padding: 20px; }
+      .hero__fruit-grid { grid-template-columns: repeat(3, 1fr); }
+      .hero__fruit-item { padding: 12px 8px; font-size: 1.6rem; }
+      .benefit-card { padding: 24px 20px; }
+      .testimonial-card { padding: 24px 20px; }
+      .stats-bar__grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+      .stat-item__value { font-size: 1.8rem; }
+      .pricing-card { padding: 28px 20px; }
+      .form-box { padding: 24px 16px; }
+      .btn--lg { padding: 15px 24px; font-size: .95rem; }
     }
   </style>
 </head>
